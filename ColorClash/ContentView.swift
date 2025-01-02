@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var showGameView: Bool = false
     @State private var showGameMode: Bool = false
+    @State private var showSettings: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -55,7 +56,7 @@ struct ContentView: View {
                     }
                     
                     Button {
-                        showGameView.toggle()
+                        showSettings.toggle()
                     } label: {
                         Text("Setting")
                             .font(.title3)
@@ -67,7 +68,7 @@ struct ContentView: View {
                     }
                     
                     Button {
-                        showGameView.toggle()
+                        //share rate app
                     } label: {
                         Text("Loving it!")
                             .font(.title3)
@@ -85,6 +86,10 @@ struct ContentView: View {
         .gameModePicker(isPresented: $showGameMode)
         .fullScreenCover(isPresented: $showGameView) {
             CasualGameView()
+        }
+        .sheet(isPresented: $showSettings) {
+            SettingsView(isPresented: $showSettings)
+                .presentationBackground(.clear)
         }
     }
 }

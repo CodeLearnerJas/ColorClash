@@ -37,8 +37,8 @@ struct GameModeSelectionView: View {
                         // Casual Mode Button
                         Button {
                             withAnimation {
-                                isPresented = false
                                 showCasualGameView = true
+//                                isPresented = false
                             }
                         } label: {
                             HStack {
@@ -63,8 +63,8 @@ struct GameModeSelectionView: View {
                         // Master Mode Button
                         Button {
                             withAnimation {
-                                isPresented = false
                                 showMasterGameView = true
+//                                isPresented = false
                             }
                         } label: {
                             HStack {
