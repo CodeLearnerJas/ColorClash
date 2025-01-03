@@ -110,12 +110,12 @@ struct SettingsView: View {
                          }
                      } label: {
                          Text("Close")
-                             .foregroundColor(.gray)
+                             .foregroundStyle(.ultraThickMaterial)
                              .padding(.vertical, 8)
                      }
                  }
                  .padding(.vertical)
-                 .frame(width: 280)
+                 .frame(width: 230)
                  .background(.ultraThinMaterial)
                  .cornerRadius(20)
                  .shadow(radius: 15)

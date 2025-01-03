@@ -18,6 +18,7 @@ struct CasualGameView: View {
     @State private var accuracyArray: [Double] = [0.0]
     @State private var showContentView = false
     @State private var highestStage = 0
+    @State private var scoreCurrent = 0
     
     var stageAccuracyReq: Double {
         guard stage > 0 else { return 95 }
@@ -57,6 +58,12 @@ struct CasualGameView: View {
                     Spacer()
                     
                     VStack{
+                        HStack{
+                            Text("Score:")
+                            Text("\(scoreCurrent)")
+                                .foregroundStyle(.paleRed)
+                                .bold()
+                        }
                         HStack{
                             Text("Accuracy to Pass:")
                             Text("\(String(format: "%.1f", stageAccuracyReq))%")
@@ -138,6 +145,10 @@ struct CasualGameView: View {
                         showContentView.toggle()
                     }
                     Button("Next Stage"){
+                        let accuracy = calculateAccuracy()
+                        withAnimation(.easeInOut(duration: 0.7)) {
+                            scoreCurrent += (500 + Int(accuracy * 1000 * (1 + accuracy)))
+                        }
                         newGame()
                         stage += 1
                         highestStage = stage
@@ -150,9 +161,11 @@ struct CasualGameView: View {
                     Button("Back") {
                         dismiss()
                         showContentView.toggle()
+                        scoreCurrent = 0
                     }
                     Button("Start Again") {
                         stage = 1
+                        scoreCurrent = 0
                         newGame()
                     }
                 } message: {

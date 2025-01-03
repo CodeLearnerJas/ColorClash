@@ -8,6 +8,7 @@ import SwiftUI
 
 struct AboutView: View {
     @Environment(\.dismiss) var dismiss
+
     
     var body: some View {
         VStack(spacing: 20){
@@ -23,8 +24,8 @@ struct AboutView: View {
             Text("About ColorClash")
                 .font(.title)
                 .bold()
-                .padding(.bottom, 50)
-
+            
+            
             Section("What is ColorClash?"){
                 Text("ColorClash is a simple casual color mixing game where you will be randomly given a RGB color and you need to control the amount of Red, Green and Blue to get your mixed color as close as possible to the given color.\nChallenge your eyes right now!")
                     .foregroundStyle(.gray)
